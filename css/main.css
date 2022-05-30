@@ -12,7 +12,8 @@
   --team-bcg-color: #f5f4fa;
   --dark-text-color: #212121;
   --footer-contact-color: rgba(255, 255, 255, 0.6);
-  --projects-card-gap:30px;
+  --card-gap:30px;
+  --card-item:3;
   --card-shadow:0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -64,7 +65,7 @@ img {
 /* Скидывание */
 
 .container {
-  max-width: 1200px;
+  width: 1200px;
   padding-left: 15px;
   padding-right: 15px;
   margin-left: auto;
@@ -77,6 +78,8 @@ img {
 
 
 .header {
+  border-bottom: 1px solid #ECECEC;
+
   font-weight: 500;
   line-height: 1.17;
   letter-spacing: 0.02em;
@@ -112,37 +115,36 @@ img {
 
 .nav-box{
   display: flex;
+  align-items: center;
 }
 .nav-list {
   display: flex;
   margin-left: auto;
-  padding-top: 32px;
-  padding-bottom: 32px;
   color: #212121;
 }
 .nav-link,
 .contact-link{
+  display: flex;
+  align-items: center;
   padding-top: 32px;
   padding-bottom: 32px;
 }
 
-.nav-item:not(:first-child){
-  margin-left: 50px;
+.nav-item:not(:last-child){
+  margin-right: 50px;
 }
 .nav-logo{
   padding-top: 24px;
   padding-bottom: 25px;
-  margin-right: auto;
+  margin-right: 93px;
 }
 .contact-list{
   display: flex;
   margin-left: auto;
-  padding-top: 32px;
-  padding-bottom: 32px;
 }
 
-.contact-item:not(:first-child){
-  margin-left: 50px;
+.contact-item:not(:last-child){
+  margin-right: 50px;
 }
 
 .nav-link:hover,
@@ -160,13 +162,10 @@ img {
 /* Hero */
 .hero {
   background-color: var(--dark-bcg-color);
-}
-
-.hero-box{
   padding-top: 200px;
   padding-bottom: 200px;
-  
 }
+
 
 .hero-title {
   color: var(--white-text-color);
@@ -176,7 +175,7 @@ img {
   line-height: 1.36;
   text-align: center;
   text-transform: uppercase;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
 }
 .hero-btn {
   display: block;
@@ -204,13 +203,7 @@ img {
 /* Privelegy section */
 
 .privelegy-list{
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.privelegy-item:not(:first-child){
-  margin-left: 30px;
+  --card-item:4;
 }
 
 .privelegy-subtitle {
@@ -225,22 +218,16 @@ img {
 /* Privelegy section */
 
 /* Occupation section */
+.occupation{
+  padding-top: 0;
+}
 
 .section-title {
   font-size: 36px;
   line-height: 1.17;
   color: var(--dark-text-color);
   text-align: center;
-}
-.occupation-title{
-  margin-top: -94px; /* Компенсация Паддинга Section */
   margin-bottom: 50px;
-}
-.occupation-list{
-  display: flex;
-}
-.occupation-item:not(:last-child){
-  margin-right: 30px;
 }
 
 /* Occupation section */
@@ -250,13 +237,8 @@ img {
 .team {
   background-color: var(--team-bcg-color);
 }
-.team-title{
-  padding-bottom: 50px;
-}
-
 
 .team-subtitle {
-  padding-top: 30px;
   margin-bottom: 10px;
 
   font-weight: 500;
@@ -269,24 +251,26 @@ img {
   line-height: 1.18;
 }
 .team-list{
-  display: flex;
-  justify-content: center;
+  --card-item:4;
 }
-.team-item:not(:first-child){
-  margin-left: 30px;
-}
-.team-item {
-  padding-bottom: 30px;
 
+.team-item {
   background-color: var(--white-bcg-color);
   box-shadow: var(--card-shadow);
   border-radius: 0px 0px 4px 4px;
+}
+.team-card-content{
+  padding-top:30px;
+  padding-bottom: 30px;
 }
 
 /* Team */
 
 /* Footer */
 .footer {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
   background-color: var(--dark-bcg-color);
 }
 .footer-logo {
@@ -304,10 +288,6 @@ img {
   color: var(--footer-contact-color);
 }
 
-.footer-box{
-  padding-top: 60px;
-  padding-bottom: 60px;
-}
 .adress-item:not(:last-child){
   margin-bottom: 9px;
 }
@@ -335,8 +315,8 @@ img {
   justify-content: center;
   margin-bottom: 50px;
 }
-.filtr-item:not(:first-child){
-  margin-left: 8px;
+.filtr-item:not(:last-child){
+  margin-right: 8px;
 }
 .filtr-button:active,
 .filtr-button:hover {
@@ -353,9 +333,6 @@ img {
 
 .projects-item {
   background-color: var(--white-bcg-color);
-  margin-left: var(--projects-card-gap);
-  margin-bottom: var(--projects-card-gap);
-  flex-basis: calc((100%/3) - var(--projects-card-gap));
 }
 
 .projects-subtitle {
@@ -369,13 +346,19 @@ img {
   font-size: 16px;
   line-height: 1.88;
 }
-.projects-list{
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: calc((-1*var(--projects-card-gap)));
-  margin-bottom: calc((-1*var(--projects-card-gap)));
+.card-item{
+margin-left: var(--card-gap);
+margin-top: var(--card-gap);
+flex-basis: calc(100%/var(--card-item) - var(--card-gap));
 }
-.card-content{
+.card-set{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: calc(-1 * var(--card-gap));
+    margin-top: calc(-1 * var(--card-gap));
+
+}
+.projects-card-content{
   border: 1px solid #EEEEEE;
   padding: 20px 24px;
 }
